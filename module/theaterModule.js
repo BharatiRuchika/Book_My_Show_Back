@@ -108,7 +108,7 @@ exports.postFeedback = async(req,res)=>{
 exports.searchTheater = async(req,res)=>{
     try{
     console.log(req.params.search);
-    var response = await theaterData.find({theater_city:req.params.search});
+    var response = await theaterData.find({theater_city:`/${req.params.search}/i`,$caseSensitive :false});
     res.send(response);
     }catch(err){
         console.log(err);
